@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday My Son 🎉</title>
+  <style>
+    :root{--bg:#0f1724;--accent:#ff6b81;--accent2:#ffd166;}
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;overflow:hidden;background:#071029;}
+    .stage{position:relative;width:100%;height:100vh;display:flex;align-items:center;justify-content:center;}
+    .card{width:100%;max-width:980px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.05));box-shadow:0 10px 40px rgba(2,6,23,0.6);overflow:hidden;backdrop-filter: blur(6px);position:relative;color:#fff;}
+    .topbar{padding:28px 32px;display:flex;align-items:center;gap:20px}
+    .avatar{width:110px;height:110px;border-radius:50%;overflow:hidden;flex:0 0 110px;border:4px solid rgba(255,255,255,0.06)}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .title{flex:1}
+    .title h1{margin:0;font-size:28px;letter-spacing:0.6px}
+    .title p{margin:6px 0 0;color:rgba(255,255,255,0.75)}
+    .main{padding:24px 32px 36px;display:flex;gap:24px;align-items:center}
+    .left{flex:1}
+    .greeting{font-size:42px;line-height:1.03;margin:0 0 12px}
+    .greeting .name{display:inline-block;padding:6px 12px;border-radius:999px;background:linear-gradient(90deg,var(--accent),#ff9bb3);color:#111;font-weight:700}
+    .message{color:rgba(255,255,255,0.9);margin:0 0 18px}
+    .right{width:360px;max-width:40%;display:flex;flex-direction:column;align-items:center;gap:12px}
+    .card-photo{width:100%;border-radius:14px;overflow:hidden;border:2px solid rgba(255,255,255,0.04)}
+    .card-photo img{width:100%;height:240px;object-fit:cover;display:block}
+    .footer{padding:12px 20px;color:rgba(255,255,255,0.6);font-size:13px;text-align:center}
+    @media (max-width:800px){.main{flex-direction:column}.right{width:100%;max-width:none}.avatar{width:86px;height:86px;flex:0 0 86px}.greeting{font-size:30px}}
+    .sparkle{position:relative;display:inline-block}.sparkle::after{content:'';position:absolute;left:-10%;top:40%;width:120%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,0.6),transparent);transform:skewX(-20deg);opacity:0;animation:glide 3s linear infinite}@keyframes glide{0%{left:-40%;opacity:0}40%{opacity:1}60%{opacity:1}100%{left:140%;opacity:0}}
+    #balloons{position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none}.balloon{position:absolute;bottom:-100px;border-radius:50%;box-shadow: inset -8px -8px 18px rgba(0,0,0,0.15)}
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="card">
+      <div class="topbar">
+        <div class="avatar"><img src="amr.jpg" alt="Photo"></div>
+        <div class="title"><h1>Happy Birthday beta 🎉</h1><p>Lots of love and blessings ❤️</p></div>
+        <div style="min-width:92px;text-align:right"><small id="dateText"></small></div>
+      </div>
+      <div class="main">
+        <div class="left">
+          <h2 class="greeting">Happy Birthday, <span class="name sparkle" id="friendName">My Lovely Baby</span></h2>
+          <p class="message" id="messageText">Wishing you joy, smiles, and lots of blessings on your special day.</p>
+        </div>
+        <div class="right">
+          <div class="card-photo"><img id="mainPhoto" src="WhatsApp Image 2025-11-16 at 09.12.05_a1f2588a.jpg" alt="Memory photo"></div>
+          <div style="padding:8px 6px;text-align:center;color:rgba(255,255,255,0.85)"><strong id="shortLine">You are our happiness ❤️</strong><p style="margin:6px 0 0;font-size:13px;color:rgba(255,255,255,0.6)">Click anywhere for magic ✨</p></div>
+        </div>
+      </div>
+      <div class="footer"> ❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</div>
+    </div>
+  </div>
+
+  <div id="balloons"></div>
+  <div id="extraFireworks"></div>
+
+  <script>
+    const dateText=document.getElementById('dateText');
+    const now=new Date();
+    dateText.textContent=now.toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
+
+    function spawnBalloon(){
+      const b=document.createElement('div'); b.className='balloon';
+      const colors=['#ff6b6b','#ffd93d','#6bcdfa','#a29bfe','#ff85e7'];
+      b.style.background=colors[Math.floor(Math.random()*colors.length)];
+      const size=40+Math.random()*50; b.style.width=size+'px'; b.style.height=(size*1.3)+'px';
+      b.style.left=Math.random()*window.innerWidth+'px';
+      document.getElementById('balloons').appendChild(b);
+      const floatTime=6000+Math.random()*4000;
+      b.animate([{transform:'translateY(20px)',opacity:1},{transform:`translateY(-${window.innerHeight+200}px)`,opacity:0}],{duration:floatTime,easing:'ease-out'}).onfinish=()=>b.remove();
+    }
+    setInterval(spawnBalloon,1200);
+
+    function launchRocket(){
+      const r=document.createElement('div'); r.style.position='fixed'; r.style.width='8px'; r.style.height='20px'; r.style.background='linear-gradient(#fff,#f00)'; r.style.boxShadow='0 0 10px #fff'; r.style.borderRadius='4px'; r.style.left=Math.random()*window.innerWidth+'px'; r.style.bottom='0px';
+      document.body.appendChild(r);
+      const peak=window.innerHeight*(0.4+Math.random()*0.4);
+      r.animate([{transform:'translateY(0)'},{transform:`translateY(${peak}px)`}],{duration:1200,easing:'ease-out'}).onfinish=()=>{r.remove(); bigExplosion(parseInt(r.style.left),peak);};
+    }
+    setInterval(launchRocket,2000);
+
+    function bigExplosion(x,h){
+      const cy=window.innerHeight-h;
+      for(let i=0;i<30;i++){
+        const s=document.createElement('div'); s.className='big-patakha'; s.style.left=x+'px'; s.style.top=cy+'px'; document.body.appendChild(s);
+        const ang=Math.random()*Math.PI*2; const dist=80+Math.random()*120; const tx=Math.cos(ang)*dist; const ty=Math.sin(ang)*dist;
+        s.animate([{transform:'translate(0,0)',opacity:1},{transform:`translate(${tx}px,${ty}px)`,opacity:0}],{duration:1500,easing:'ease-out'}).onfinish=()=>s.remove();
+      }
+    }
+
+    const fx=document.createElement('style'); fx.textContent=`.big-patakha{position:fixed;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle,white,yellow,orange,red);box-shadow:0 0 15px yellow,0 0 25px orange;}`; document.head.appendChild(fx);
+
+    window.addEventListener('click', e=>{
+      const h=document.createElement('div'); h.style.position='absolute'; h.style.left=e.clientX+'px'; h.style.top=e.clientY+'px'; h.innerHTML='💖'; h.style.fontSize='22px';
+      document.body.appendChild(h);
+      h.animate([{transform:'translateY(0)',opacity:1},{transform:'translateY(-120px)',opacity:0}],{duration:1500,easing:'ease-out'}).onfinish=()=>h.remove();
+    });
+  </script>
+</body>
+</html>
